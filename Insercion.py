@@ -14,6 +14,6 @@ def insercion(arreglo):
         
     return arreglo
 
-arreglo = [5, 2, 4, 6, 1, 3, 9, 10, 7, 8]
+arreglo = [5, 2, 4, 6, 1, 3, 3, 9, 10, 7, 8, 1]
 nuevoArreglo = insercion(arreglo)
 print(nuevoArreglo)
