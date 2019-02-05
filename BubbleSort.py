@@ -1,9 +1,4 @@
-#Algoritmo practica
-
-def swap(j, i, arreglo):
-    aux = arreglo[i]
-    arreglo[i] = arreglo[j]
-    arreglo[j] = aux
+from Swap import swap
 
 def bubble(A):
     n = len(A)
@@ -19,9 +14,3 @@ def bubble(A):
 
         if not swapped:
             break
-
-    return A
-
-arreglo = [5, 2, 4, 6, 1, 3, 3, 9, 10, 7, 8, 1]
-nuevoArreglo = bubble(arreglo)
-print(nuevoArreglo)
