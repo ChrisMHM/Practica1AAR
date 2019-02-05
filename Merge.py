@@ -3,11 +3,10 @@
 # Merge Sort
 #---------------------------------------
 import sys
-import math
 	
 def mergeSort(A, primero, ultimo):
 	if primero < ultimo:
-		medio = math.floor((primero + ultimo)/2)
+		medio = (primero + ultimo)//2
 		mergeSort(A, primero, medio)
 		mergeSort(A, medio+1, ultimo)
 		merge(A, primero, medio, ultimo)
