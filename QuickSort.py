@@ -1,14 +1,10 @@
-def swap(j, i, arreglo):
-    aux = arreglo[i]
-    arreglo[i] = arreglo[j]
-    arreglo[j] = aux
+from Swap import swap
 	
 def quickSort(A, izquierda, derecha):
     if izquierda < derecha:
         p = particion(A, izquierda, derecha)
         quickSort(A, izquierda, p - 1)
         quickSort(A, p + 1, derecha)
-    return A
 	
 def getPivote(A, izquierda, derecha):
     medio = (derecha + izquierda) // 2
@@ -38,8 +34,3 @@ def particion(A, izquierda, derecha):
     swap(izquierda, borde, A)
     
     return (borde)
-	
-A = [5,9,1,2,4,8,6,3,7]
-print(A)
-nuevoA = quickSort(A, 0, len(A)-1)
-print(A)
