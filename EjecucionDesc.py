@@ -13,7 +13,6 @@ def listasTiempoEjecucion(tiempoEjecucion, tiemposInsert ,tiemposMerge ,tiemposB
     tiemposBubble.append(tiempoEjecucion[2])
     tiemposQuick.append(tiempoEjecucion[3])
 
-
 def ejecucion(elementos):
     sys.setrecursionlimit(20000)
     file = open("/home/christian/Documentos/Github/Practica1AAR/Descendentes/descendentes_"+ str(elementos) +".txt", "r")
@@ -67,25 +66,22 @@ def escribeArchivo(file, lista):
     f.close()
 
 def escribeArchivoLatex(archivo, insert, merge, bubble, quick):
-    cont = 100
     file = open(archivo, "w")
     for n in range(len(insert)):
-        file.write("\\hline\n")
-        cadena = str(cont) + " & " + str(insert[n]) + " & " + str(merge[n]) + " & " + str(bubble[n])  + " & " + str(quick[n]) + " &\\\\\n"
+        file.write("\n")
+        cadena = " " + str(insert[n]) + " & " + str(merge[n]) + " & " + str(bubble[n])  + " & " + str(quick[n]) + " &\n "
         file.write(cadena)
-        cont += 100
-        
-    file.write("\\hline")
+
     file.close()
 
 def move(src, filename, dest):
     shutil.move(os.path.join(src, filename), os.path.join(dest, filename))
 
 def main():
-    total = 2000
+    total = (int)(sys.argv[1])
     n = 100
     cont = 0
-    
+
     tiempoEjecucicon = []
 
     tiemposInsert = []
@@ -97,7 +93,7 @@ def main():
     archivoMerge = "archivoDescMerge.txt"
     archivoBubble = "archivoDescBubble.txt"
     archivoQuick = "archivoDescQuick.txt"
-    archivoLatex = "tabla.tex"
+    archivoLatex = "tabla2.tex"
 
     while n <= total:
         tiempoEjecucicon = ejecucion(n)

@@ -7,14 +7,12 @@ import sys
 import shutil
 import os
 
-
 def listasTiempoEjecucion(tiempoEjecucion, tiemposInsert, tiemposMerge,
                           tiemposBubble, tiemposQuick):
     tiemposInsert.append(tiempoEjecucion[0])
     tiemposMerge.append(tiempoEjecucion[1])
     tiemposBubble.append(tiempoEjecucion[2])
     tiemposQuick.append(tiempoEjecucion[3])
-
 
 def ejecucion(elementos):
     sys.setrecursionlimit(20000)
@@ -61,7 +59,6 @@ def ejecucion(elementos):
 
     return tiempoEjecucion
 
-
 def escribeArchivo(file, lista):
     cont = 100
     f = open(file, "w")
@@ -71,28 +68,20 @@ def escribeArchivo(file, lista):
         cont += 100
     f.close()
 
-
 def escribeArchivoLatex(archivo, insert, merge, bubble, quick):
-    cont = 100
     file = open(archivo, "w")
     for n in range(len(insert)):
-        file.write("\\hline\n")
-        cadena = str(cont) + " & " + str(insert[n]) + " & " + str(
-            merge[n]) + " & " + str(bubble[n]) + " & " + str(
-                quick[n]) + " &\\\\\n"
+        file.write("\n")
+        cadena = str(insert[n]) + " & " + str(merge[n]) + " & " + str(bubble[n]) + " & " + str(quick[n]) + " \\\\\n"
         file.write(cadena)
-        cont += 100
 
-    file.write("\\hline")
     file.close()
-
 
 def move(src, filename, dest):
     shutil.move(os.path.join(src, filename), os.path.join(dest, filename))
 
-
 def main():
-    total = 2000
+    total = (int)(sys.argv[1])
     n = 100
     cont = 0
 
@@ -107,7 +96,7 @@ def main():
     archivoMerge = "archivoPromMerge.txt"
     archivoBubble = "archivoPromBubble.txt"
     archivoQuick = "archivoPromQuick.txt"
-    #archivoLatex = "tabla.tex"
+    archivoLatex = "tabla3.tex"
 
     while n <= total:
         tiempoEjecucicon = ejecucion(n)
@@ -116,7 +105,7 @@ def main():
         n += 100
         cont += 1
 
-    #escribeArchivoLatex(archivoLatex, tiemposInsert, tiemposMerge, tiemposBubble, tiemposQuick)
+    escribeArchivoLatex(archivoLatex, tiemposInsert, tiemposMerge, tiemposBubble, tiemposQuick)
 
     escribeArchivo(archivoInsert, tiemposInsert)
     escribeArchivo(archivoMerge, tiemposMerge)

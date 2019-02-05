@@ -1,12 +1,16 @@
 import os
+import sys
 
-n = 100
-cont = 0
+n = (int)(sys.argv[1])
 
-while n <= 10000:
-    cmd = "python EjecucionDesc.py " + str(n)
+if n%100==0:
+    cmd = "python3 EjecucionAsc.py " + str(n)
     os.system(cmd)
-    n = n + 100
-    cont = cont + 1
-
-print("Numero de ejecuciones: " + str(cont))
+    cmd = "python3 EjecucionDesc.py " + str(n)
+    os.system(cmd)
+    cmd = "python3 EjecucionProm.py " + str(n)
+    os.system(cmd)
+    cmd = "python3 UnirTablas.py"
+    os.system(cmd)
+else:
+    print("Error")
