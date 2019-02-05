@@ -37,22 +37,22 @@ def ejecucion(elementos):
     inicio = time.time()
     insercion(arreglo1)
     fin = time.time()
-    tiempoEjecucion.append(float("{0:.6f}".format(fin - inicio)))
+    tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
     inicio = time.time()
     mergeSort(arreglo3, 0, len(arreglo3)-1)
     fin = time.time()
-    tiempoEjecucion.append(float("{0:.6f}".format(fin - inicio)))
+    tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
     inicio = time.time()
     bubble(arreglo2)
     fin = time.time()
-    tiempoEjecucion.append(float("{0:.6f}".format(fin - inicio)))
+    tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
     inicio = time.time()
     quickSort(arreglo4, 0, len(arreglo4)-1)
     fin = time.time()
-    tiempoEjecucion.append(float("{0:.6f}".format(fin - inicio)))
+    tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
 
     return tiempoEjecucion
@@ -74,7 +74,7 @@ def escribeArchivoLatex(archivo, insert, merge, bubble, quick):
         cadena = str(cont) + " & " + str(insert[n]) + " & " + str(merge[n]) + " & " + str(bubble[n])  + " & " + str(quick[n]) + " &\\\\\n"
         file.write(cadena)
         cont += 100
-        
+
     file.write("\\hline")
     file.close()
 
@@ -85,7 +85,7 @@ def main():
     total = 2000
     n = 100
     cont = 0
-    
+
     tiempoEjecucicon = []
 
     tiemposInsert = []

@@ -7,7 +7,9 @@ import sys
 import shutil
 import os
 
-def listasTiempoEjecucion(tiempoEjecucion, tiemposInsert ,tiemposMerge ,tiemposBubble ,tiemposQuick):
+
+def listasTiempoEjecucion(tiempoEjecucion, tiemposInsert, tiemposMerge,
+                          tiemposBubble, tiemposQuick):
     tiemposInsert.append(tiempoEjecucion[0])
     tiemposMerge.append(tiempoEjecucion[1])
     tiemposBubble.append(tiempoEjecucion[2])
@@ -16,7 +18,9 @@ def listasTiempoEjecucion(tiempoEjecucion, tiemposInsert ,tiemposMerge ,tiemposB
 
 def ejecucion(elementos):
     sys.setrecursionlimit(20000)
-    file = open("/home/christian/Documentos/Github/Practica1AAR/Descendentes/descendentes_"+ str(elementos) +".txt", "r")
+    file = open(
+        "/home/christian/Documentos/Github/Practica1AAR/Promedio/random_"
+        + str(elementos) + ".txt", "r")
     arreglo1 = []
     arreglo2 = []
     arreglo3 = []
@@ -40,7 +44,7 @@ def ejecucion(elementos):
     tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
     inicio = time.time()
-    mergeSort(arreglo3, 0, len(arreglo3)-1)
+    mergeSort(arreglo3, 0, len(arreglo3) - 1)
     fin = time.time()
     tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
@@ -50,42 +54,48 @@ def ejecucion(elementos):
     tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
     inicio = time.time()
-    quickSort(arreglo4, 0, len(arreglo4)-1)
+    quickSort(arreglo4, 0, len(arreglo4) - 1)
     fin = time.time()
     tiempoEjecucion.append("{0:.5f}".format(fin - inicio).rstrip("0"))
     #################################################
 
     return tiempoEjecucion
 
+
 def escribeArchivo(file, lista):
     cont = 100
-    f = open (file, "w")
+    f = open(file, "w")
     for e in lista:
         cadena = str(cont) + " " + str(e) + "\n"
         f.write(cadena)
         cont += 100
     f.close()
 
+
 def escribeArchivoLatex(archivo, insert, merge, bubble, quick):
     cont = 100
     file = open(archivo, "w")
     for n in range(len(insert)):
         file.write("\\hline\n")
-        cadena = str(cont) + " & " + str(insert[n]) + " & " + str(merge[n]) + " & " + str(bubble[n])  + " & " + str(quick[n]) + " &\\\\\n"
+        cadena = str(cont) + " & " + str(insert[n]) + " & " + str(
+            merge[n]) + " & " + str(bubble[n]) + " & " + str(
+                quick[n]) + " &\\\\\n"
         file.write(cadena)
         cont += 100
-        
+
     file.write("\\hline")
     file.close()
 
+
 def move(src, filename, dest):
     shutil.move(os.path.join(src, filename), os.path.join(dest, filename))
+
 
 def main():
     total = 2000
     n = 100
     cont = 0
-    
+
     tiempoEjecucicon = []
 
     tiemposInsert = []
@@ -93,34 +103,36 @@ def main():
     tiemposBubble = []
     tiemposQuick = []
 
-    archivoInsert = "archivoDescInsert.txt"
-    archivoMerge = "archivoDescMerge.txt"
-    archivoBubble = "archivoDescBubble.txt"
-    archivoQuick = "archivoDescQuick.txt"
-    archivoLatex = "tabla.tex"
+    archivoInsert = "archivoPromInsert.txt"
+    archivoMerge = "archivoPromMerge.txt"
+    archivoBubble = "archivoPromBubble.txt"
+    archivoQuick = "archivoPromQuick.txt"
+    #archivoLatex = "tabla.tex"
 
     while n <= total:
         tiempoEjecucicon = ejecucion(n)
-        listasTiempoEjecucion(tiempoEjecucicon, tiemposInsert, tiemposMerge, tiemposBubble, tiemposQuick)
+        listasTiempoEjecucion(tiempoEjecucicon, tiemposInsert, tiemposMerge,
+                              tiemposBubble, tiemposQuick)
         n += 100
         cont += 1
 
-    escribeArchivoLatex(archivoLatex, tiemposInsert, tiemposMerge, tiemposBubble, tiemposQuick)
+    #escribeArchivoLatex(archivoLatex, tiemposInsert, tiemposMerge, tiemposBubble, tiemposQuick)
 
     escribeArchivo(archivoInsert, tiemposInsert)
     escribeArchivo(archivoMerge, tiemposMerge)
     escribeArchivo(archivoBubble, tiemposBubble)
     escribeArchivo(archivoQuick, tiemposQuick)
 
-    move("/home/christian/Documentos/Github/Practica1AAR", "archivoDescInsert.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaDesc")
-    move("/home/christian/Documentos/Github/Practica1AAR", "archivoDescMerge.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaDesc")
-    move("/home/christian/Documentos/Github/Practica1AAR", "archivoDescBubble.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaDesc")
-    move("/home/christian/Documentos/Github/Practica1AAR", "archivoDescQuick.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaDesc")
+    move("/home/christian/Documentos/Github/Practica1AAR", "archivoPromInsert.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaProm")
+    move("/home/christian/Documentos/Github/Practica1AAR", "archivoPromMerge.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaProm")
+    move("/home/christian/Documentos/Github/Practica1AAR", "archivoPromBubble.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaProm")
+    move("/home/christian/Documentos/Github/Practica1AAR", "archivoPromQuick.txt", "/home/christian/Documentos/Github/Practica1AAR/GraficaProm")
 
     #for i in range(cont):
     #    print(i, tiemposInsert[i], tiemposMerge[i], tiemposBubble[i], tiemposQuick[i])
 
     print("Numero de ejecuciones: " + str(cont))
+
 
 if __name__ == "__main__":
     main()
