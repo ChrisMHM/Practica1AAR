@@ -1,3 +1,239 @@
+
+\documentclass[conference]{IEEEtran}
+\usepackage{graphicx,times,amsmath,colortbl, psfrag} % Add all your packages here
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[ruled, vlined, english, boxed, linesnumbered, lined]{algorithm2e}
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage{algpseudocode} 
+
+\usepackage{multirow}
+
+\usepackage {amsfonts}
+\usepackage {amsmath}
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%\usepackage[pdftex]{graphicx}
+%%
+%\ifCLASSINFOpdf
+%   
+%  % declare the path(s) where your graphic files are
+%   \graphicspath{{../pdf/}{../jpeg/}}
+%  % and their extensions so you won't have to specify these with
+%  % every instance of \includegraphics
+%   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+%\else
+%  \fi
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Pr\'actica 1. ``An\'alisis experimental de la eficiencia de algoritmos de ordenamiento''}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Christian Miguel Hernández Mej\'ia}
+
+\IEEEauthorblockA{
+Departamento de Ciencias e Ingenier\'ia de la Computaci\'on,\\ 
+An\'alisis de Algoritmos, ESCOM-IPN\\
+ (email: christian.mhm@outlook.com)
+}
+}
+% make the title area
+\maketitle
+
+
+
+\section{Introducci\'on}
+El alumno realizar\'a un an\'alisis a posteriori de diversos algoritmos de ordenamiento. Implementar\'a y comparar\'a la eficiencia de estos algoritmos en los casos mejor, peor y promedio.
+
+Para mostrar la eficiencia de diferentes algoritmos que solucionan un mismo problema, se consider\'o el problema de ordenamiento de una lista de n\'umeros enteros. Los algoritmos que se implementar\'an son:
+
+\begin{enumerate}
+	\item Ordenamiento por inseci\'on
+	\item El m\'etodo de la burbuja 
+	\item Ordenamiento por mezcla
+	\item Ordenamiento r\'apido (Quick-sort)
+\end{enumerate}
+
+\section{Marco teórico}
+
+\subsection{Algoritmo}
+
+El término de algoritmo se puede entender como la descripción de cómo resolver un problema. El conjunto de instrucciones que especifican la secuencia de operaciones a realizar, en orden, para resolver un sistema específico o clase de problemas, también se denomina algoritmo. En otras palabras un algoritmo es una "especie de fórmula" para la resolución de un problema.
+
+Además de ser un conjunto finito de reglas que dan lugar a una secuencia de operaciones para resolver un tipo específico de problema, un algoritmo debe cumplir cinco importantes condiciones:
+
+\begin{enumerate}
+\item Finitud. Un algoritmo tiene que acabar tras un número finito de pasos.
+\item Definibilidad. Cada paso de un algoritmo debe de tener un significado preciso; las acciones a realizar han de estar especificadas en cada paso rigurosamente y sin ambigüedad.
+\item Conjunto de entradas. Debe existir un conjunto específico de objetos, cada uno de los cuales constituye los datos iniciales de un caso particular del problema que resuelve el algoritmo. A este conjunto se llama conjunto de entrada del algoritmo.
+\item Conjunto de salidas. Debe existir un conjunto específico de objetos, cada uno de los cuales constituye la salida o respuesta que debe tener el algoritmo para los diferentes casos particulares del problema. Para cada entrada del algoritmo debe existir una salida asociada.
+\item Efectividad. Un algoritmo debe ser efectivo. Esto significa que todas las operaciones realizadas en el algoritmo deben ser lo bastante básicas para poder ser efectuadas de modo exacto en un lapso finito por el procesador.
+\end{enumerate}
+
+\subsection{An\'alisis a priori y posteriori}
+
+El tiempo de ejecución de un algoritmo va a depender de diversos factores como son: los datos de entrada que le suministremos, la calidad del código generado por el compilador para crear el programa objeto, la naturaleza y rapidez de las instrucciones máquina del procesador concreto que ejecute el programa, y la complejidad intrínseca del algoritmo. Hay dos estudios posibles sobre el tiempo:
+
+
+
+Deber\'a enviar al correo \href{miriam.pescador@gmail.com}, una carpeta comprimida con la implementaci\'on de los c\'odigos python y el reporte en formato latex y pdf.
+El asunto del correo deber\'a decir "Practica 1 Analisis de Algoritmos [nombre completo del alumno comenzando con el apellido paterno]".
+La carpeta debe tener el nombre del alumno (comenzando por apellido paterno).
+La fecha l\'imite de entrega es el pr\'oximo Martes 5 de febrero de 2019 a las 10:00 pm. Por cada d\'ia de retraso se penalizar\'a al alumno con 15\% de la calificaci\'on obtenida. 
+\subsection{An\'alisis del mejor y peor caso}
+
+El reporte en latex debe considerar las siguientes secciones:
+
+\begin{itemize}
+\item Introducci\'on: descripci\'on sobre la implementaci\'on de la pr\'actica
+\item Marco te\'orico. En esta secci\'on deber\'a poner los conceptos de:
+\begin{itemize}
+	\item Algoritmo
+	\item An\'alisis a priori y posteriori
+	\item An\'alisis del mejor y peor caso
+	\item Caso promedio
+\end{itemize}
+Incluya la bibliograf\'ia que fue consultada (use el formato de ejemplo para agregarlo a su reporte).
+\item Implementaci\'on. Coloque en esta secci\'on los algoritmos proporcionados en la plantilla de latex. Proporcione informaci\'on sobre las caracter\'isticas del equipo de c\'omputo donde realiz\'o las pruebas (sistema operativo, tipo de procesador, memoria, etc.).
+Adem\'as deber\'a documentar las bibliotecas que empleo para la implementaci\'on de los algoritmos.
+\item Resultados. Incluya la tabla de resultados y graficas solicitadas.
+\item Conclusiones. Describa cu\'ales fueron los mejores algoritmos y para qu\'e casos y/o n\'umero de datos de entrada. Proporcione una justificaci\'on del por qu\'e se obtuvieron estos resultados. 
+\end{itemize} 
+
+\subsection{Caso promedio}
+
+\begin{algorithm}[h]
+%\hspace*{\algorithmicindent} \textbf{Input.} {A: conjunto de n\'umeros enteros} \\
+%\hspace*{\algorithmicindent} \textbf{Output.} {A: lista ordenada de los n\'umeros enteros}
+\KwData{A : list of sortable items}
+\Begin{	
+  InsertionSort(A){ \\
+  
+	\For{$ i \leftarrow 2$ to $n$}{
+		$j \leftarrow   i - 1 $;\\
+		\While{$j \geq 1 $ and $A[j] > A[j+1]$}{
+			swap(A[j], A[j+1]);\\
+			$j \leftarrow j-1$;\\		
+		}
+	}
+	return A;	
+}
+}
+\caption{Insertion Sort Algorithm}
+\label{merge}
+\end{algorithm}
+\section{Implementaci\'on}
+\begin{algorithm}[h]
+%\Begin{	
+  MergeSort(A, $p$, $r$){ \\
+  
+	\If{$p < r$}{
+		$q \leftarrow   \lfloor (p+r)/2 \rfloor $;\\
+		MergeSort(A, $p$, $q$);\\
+		MergeSort(A, $q+1$, $r$);\\
+		Merge(A, $p$, $q$, $r$);
+	}
+	return A;	
+%}
+}
+\caption{Merge Sort Algorithm}
+\label{merge}
+\end{algorithm}
+ 
+\section{Resultados}
+\begin{algorithm}[h]
+\KwData{A : list of sortable items}
+\Begin{	
+  $n \leftarrow length(A)$;\\
+   \Repeat{not swapped}{
+      $swapped \leftarrow false$;\\
+      \For { $i \leftarrow 1$ to $n$}{
+           \If {$A[i-1] > A[i]$} {
+            swap(A[i-1], A[i]);\\
+            $swapped \leftarrow true$;\\
+            }
+      }
+      $n \leftarrow n - 1$;
+   } 
+   return A;	
+}
+\caption{Bubble Sort Algorithm}
+\label{bubble}
+\end{algorithm}
+ 
+
+\begin{algorithm}[h]
+%\Begin{	
+  QuickSort(A, $p$, $r$){ \\
+	\If{$p < r$}{
+		$q \leftarrow   Partition(A, p, r)$;\\
+		QuickSort(A, $p$, $q$);\\
+		QuickSort(A, $q+1$, $r$);\\
+		
+	}
+	return A;	
+%}
+}
+\caption{Quick Sort Algorithm}
+\label{quick}
+\end{algorithm}
+
+
+\begin{algorithm}[h]
+%\Begin{	
+ Partition(A, $p$, $r$){ \\
+  $x \leftarrow A[p]$;\\
+  $i \leftarrow p-1$
+  $j \leftarrow r+1$
+  \While{true}{
+   	\Repeat{$A[j]\leq x$}{
+      		$j \leftarrow j - 1$;\\
+	 }
+	 \Repeat{$A[j]\geq x$}{
+      		$i \leftarrow i + 1$;\\
+	 }
+	 \If{i < j}{
+	 	exchange $A[i] \leftrightarrow A[j] $;
+	 }
+	 \Else{return j;}
+      		
+    }	
+}
+\caption{Partition Algorithm}
+\label{partition}
+\end{algorithm}
+
+\section{Conclusiones}
+
+
+La figura \ref{fig:grafica} muestra el comportamiento de las funciones.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\columnwidth]{Imagenes/grafica1.png}
+	\caption{Comparaci\'on del comportamiento de los algoritmos}
+	\label{fig:grafica}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{n} & \multicolumn{4}{c|}{Mejor Caso} & \multicolumn{4}{c|}{Peor Caso} & \multicolumn{4}{c|}{Caso promedio} \\ 
+\cline{2-13}
+& insertion & merge & bubble & quick-sort & insertion & merge & bubble & quick-sort & insertion & merge & bubble & quick-sort \\ 
 \hline
 100 & 0.00004 & 0.00053 & 0.00002 & 0.00037 & 0.0043 & 0.00057 & 0.00317 & 0.00105 &0.00222 & 0.00053 & 0.00223 & 0.00038 \\
 \hline
@@ -99,6 +335,20 @@
 \hline
 5000 & 0.00222 & 0.03849 & 0.00125 & 0.03006 & 12.28414 & 0.04086 & 10.1651 & 2.37931 &6.64304 & 0.04244 & 6.91255 & 0.03268 \\
 \hline
+
+
+\end{tabular}
+\caption{Resultados de los tiempos de ejecuci\'on para cada algoritmo.}
+\end{table*}
+
+
+\begin{table*}[!ht]
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{n} & \multicolumn{4}{c|}{Mejor Caso} & \multicolumn{4}{c|}{Peor Caso} & \multicolumn{4}{c|}{Caso promedio} \\ 
+\cline{2-13}
+& insertion & merge & bubble & quick-sort & insertion & merge & bubble & quick-sort & insertion & merge & bubble & quick-sort \\ 
+\hline
 5100 & 0.00237 & 0.03956 & 0.00135 & 0.03096 & 11.86569 & 0.03987 & 10.4662 & 2.42466 &6.72113 & 0.04133 & 7.03041 & 0.03421 \\
 \hline
 5200 & 0.00236 & 0.04077 & 0.00131 & 0.03315 & 13.30632 & 0.04147 & 11.21489 & 2.59864 &6.70386 & 0.0448 & 7.63108 & 0.03405 \\
@@ -199,3 +449,35 @@
 \hline
 10000 & 0.00363 & 0.07823 & 0.00258 & 0.06447 & 47.60412 & 0.07869 & 41.08169 & 9.64315 &24.6981 & 0.09382 & 25.66132 & 0.07198 \\
 \hline
+
+
+\end{tabular}
+\caption{Resultados de los tiempos de ejecuci\'on para cada algoritmo.}
+\end{table*}
+
+
+
+\section{Referencias}
+
+
+%\bibliography{my-paper}
+
+
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{moscato99}
+P. Moscato,
+\newblock {\em On evolution, search, optimization, genetic algorithms and martial arts: Towards memetic algorithms,}
+\newblock  Technical Report C3P Report 826, 1989.
+
+\bibitem{KrasnogorS00}%
+N. Krasnogor and J. Smith,
+\newblock {\em A Memetic Algorithm With Self-Adaptive Local Search: TSP as a case study,}
+\newblock Genetic Evolutionary Computation Conference pp. 987-994, 2000. 
+
+\end{thebibliography}
+
+\end{document}
+
+
